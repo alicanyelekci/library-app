@@ -1,8 +1,7 @@
 /* eslint-disable require-jsdoc */
-const main = document.querySelector('.main-content');
-const addBtn = document.querySelector('.add');
-const submitBtn = document.querySelector('.submit-btn');
-
+const main = document.querySelector(".main-content");
+const addBtn = document.querySelector(".add");
+const submitBtn = document.querySelector(".submit-btn");
 
 class Book {
   constructor(title, author, pages, read) {
@@ -20,35 +19,35 @@ class Library {
 
   addBook() {
     const book = new Book(
-        document.getElementById('title').value,
-        document.getElementById('author').value,
-        document.getElementById('pages').value,
-        document.getElementById('read').checked,
+      document.getElementById("title").value,
+      document.getElementById("author").value,
+      document.getElementById("pages").value,
+      document.getElementById("read").checked
     );
 
     this.books.push(book);
     this.displayBookInLibrary(book);
 
     document.forms[0].reset();
-    document.getElementById('myForm').style.display = 'none';
+    document.getElementById("myForm").style.display = "none";
   }
 
   displayBookInLibrary(book) {
-    const bookCard = document.createElement('div');
-    bookCard.className = 'book';
+    const bookCard = document.createElement("div");
+    bookCard.className = "book";
     main.appendChild(bookCard);
 
-    const title = document.createElement('div');
-    const author = document.createElement('div');
-    const pages = document.createElement('div');
-    const read = document.createElement('button');
-    const remove = document.createElement('button');
+    const title = document.createElement("div");
+    const author = document.createElement("div");
+    const pages = document.createElement("div");
+    const read = document.createElement("button");
+    const remove = document.createElement("button");
 
-    title.className = 'title';
-    author.className = 'author';
-    pages.className = 'pages';
-    read.className = 'read';
-    remove.className = 'remove';
+    title.className = "title";
+    author.className = "author";
+    pages.className = "pages";
+    read.className = "read";
+    remove.className = "remove";
 
     title.innerText = `Title: ${book.title}`;
     author.innerText = `Author: ${book.author}`;
@@ -56,11 +55,11 @@ class Library {
     remove.innerText = `Remove`;
 
     if (book.read == true) {
-      read.innerText = 'Read';
-      read.style.backgroundColor = 'green';
+      read.innerText = "Read";
+      read.style.backgroundColor = "green";
     } else if (book.read == false) {
-      read.innerText = 'Not Read';
-      read.style.backgroundColor = 'red';
+      read.innerText = "Not Read";
+      read.style.backgroundColor = "red";
     }
 
     bookCard.appendChild(title);
@@ -69,18 +68,18 @@ class Library {
     bookCard.appendChild(read);
     bookCard.appendChild(remove);
 
-    this.readBtn = document.querySelectorAll('.read');
-    this.removeBtn = document.querySelectorAll('.remove');
+    this.readBtn = document.querySelectorAll(".read");
+    this.removeBtn = document.querySelectorAll(".remove");
 
     read.onclick = () => {
       if (book.read == true) {
         book.read = false;
-        read.innerText = 'Not Read';
-        read.style.backgroundColor = 'red';
+        read.innerText = "Not Read";
+        read.style.backgroundColor = "red";
       } else {
         book.read = true;
-        read.innerText = 'Read';
-        read.style.backgroundColor = 'green';
+        read.innerText = "Read";
+        read.style.backgroundColor = "green";
       }
     };
 
@@ -93,11 +92,11 @@ class Library {
 
 const myLibrary = new Library();
 
-addBtn.addEventListener('click', () => {
-  document.getElementById('myForm').style.display = 'block';
+addBtn.addEventListener("click", () => {
+  document.getElementById("myForm").style.display = "block";
 });
 
-submitBtn.addEventListener('click', (e) => {
+submitBtn.addEventListener("click", (e) => {
   e.preventDefault();
   myLibrary.addBook();
 });
