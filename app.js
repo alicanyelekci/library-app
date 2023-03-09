@@ -90,6 +90,10 @@ class Library {
   }
 }
 
+const title = document.getElementById("title");
+const author = document.getElementById("author");
+const pages = document.getElementById("pages");
+
 const myLibrary = new Library();
 
 addBtn.addEventListener("click", () => {
@@ -98,5 +102,11 @@ addBtn.addEventListener("click", () => {
 
 submitBtn.addEventListener("click", (e) => {
   e.preventDefault();
-  myLibrary.addBook();
+  if (
+    !title.validity.valueMissing &&
+    !author.validity.valueMissing &&
+    !pages.validity.valueMissing
+  ) {
+    myLibrary.addBook();
+  }
 });
